@@ -1,0 +1,505 @@
+{
+  "info": {
+    "_postman_id": "e6855538-e897-4457-9d0e-0a97cd7ce3d5",
+    "name": "QA-Portfolio-Project",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55055702",
+    "_collection_link": "https://go.postman.co/collection/55055702-e6855538-e897-4457-9d0e-0a97cd7ce3d5?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Delete repo cautionary cleanup",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Cleanup 204 or 404\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([204, 404]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{baseURL}}/repos/{{owner}}/{{repo}}",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "repos",
+            "{{owner}}",
+            "{{repo}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Repo",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "const random = Math.random().toString(36).substring(2);\r",
+              "const repositoryName = \"My repository \" + random;\r",
+              "\r",
+              "pm.collectionVariables.set(\"repositoryName\", repositoryName);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Repository name created\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.name).to.eql(pm.variables.get(\"repo\"));\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Description created\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.private).to.eql(true);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"name\": \"{{repo}}\",\r\n    \"description\": \"To demonstrate Full Stack QA knowledge of APIs, Postman, Automated API tests, and CI/CD integration\",\r\n    \"private\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/user/repos",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "user",
+            "repos"
+          ]
+        },
+        "description": "ISSUE NOTES:\n\nI can see the issue. The **Create Repository** request is returning a `404 Not Found` error. Let me analyze what's wrong:\n\n1. **The URL has a trailing space**: `https://api.github.com/user/repos` — there's a space at the end of the URL, which can cause the request to fail. **\\[This was definitely an issue. doh!\\]**\n    \n2. **No** **`Authorization`** **header**: The GitHub API requires authentication to create a repository. The request has no headers set, even though a `github-token` variable is used elsewhere in the collection. **\\[I don't get this, because they were there\\]**\n    \n3. **No** **`Content-Type`** **header**: The body is JSON but there's no `Content-Type: application/json` header. **\\[I don't get this because it was defined when I checked\\]**\n    \n\nI wish it would let me do the fixes, so I can learn."
+      },
+      "response": []
+    },
+    {
+      "name": "Edit repo description",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Check edited description\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.description).to.eql(\"I am editing the description\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"{{repo}}\",\r\n    \"description\": \"I am editing the description\",\r\n    \"private\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/repos/{{owner}}/{{repo}}",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "repos",
+            "{{owner}}",
+            "{{repo}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add/replace repo topics",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \r\n  \r\n  \"names\": [\r\n    \"qa-tests\",\r\n    \"postman\",\r\n    \"github-api\",\r\n    \"sample-crud-flow\",\r\n    \"automation\"\r\n   ] \r\n   }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/repos/{{owner}}/{{repo}}/topics",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "repos",
+            "{{owner}}",
+            "{{repo}}",
+            "topics"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get repos",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Expected new repo name is in the list\", function () {\r",
+              "    const repos = pm.response.json();\r",
+              "    const found = repos.some(r => r.name === (pm.variables.get(\"repo\")));\r",
+              "    pm.expect(found).to.be.true;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"New repo exists and is private\", function () {\r",
+              "    const repos = pm.response.json();\r",
+              "    const match = repos.find(r => r.name === (pm.variables.get(\"repo\")));\r",
+              "    pm.expect(match).to.exist;\r",
+              "    pm.expect(match.private).to.eql(true);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/user/repos",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "user",
+            "repos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "negative test: Create repo 422 already exists",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "const random = Math.random().toString(36).substring(2);\r",
+              "const repositoryName = \"My repository \" + random;\r",
+              "\r",
+              "pm.collectionVariables.set(\"repositoryName\", repositoryName);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 422\", function () {\r",
+              "    pm.response.to.have.status(422);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"{{repo}}\",\r\n    \"description\": \"To demonstrate Full Stack QA knowledge of APIs, Postman, Automated API tests, and CI/CD integration.\",\r\n    \"private\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/user/repos",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "user",
+            "repos"
+          ]
+        },
+        "description": "ISSUE NOTES:\n\nI can see the issue. The **Create Repository** request is returning a `404 Not Found` error. Let me analyze what's wrong:\n\n1. **The URL has a trailing space**: `https://api.github.com/user/repos` — there's a space at the end of the URL, which can cause the request to fail. **\\[This was definitely an issue. doh!\\]**\n    \n2. **No** **`Authorization`** **header**: The GitHub API requires authentication to create a repository. The request has no headers set, even though a `github-token` variable is used elsewhere in the collection. **\\[I don't get this, because they were there\\]**\n    \n3. **No** **`Content-Type`** **header**: The body is JSON but there's no `Content-Type: application/json` header. **\\[I don't get this because it was defined when I checked\\]**\n    \n\nI wish it would let me do the fixes, so I can learn."
+      },
+      "response": []
+    },
+    {
+      "name": "Delete repo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 204\", function () {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{baseURL}}/repos/{{owner}}/{{repo}}",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "repos",
+            "{{owner}}",
+            "{{repo}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "negative test: Get repos 401 Unauthorized",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 401\", function () {\r",
+              "    pm.response.to.have.status(401);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/user/repos",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "user",
+            "repos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "negative test: Get repos 400 bad request",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/%/repos",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "%",
+            "repos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "negative test: Get repos 404 not found",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 404\", function () {\r",
+              "    pm.response.to.have.status(404);\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/repos/{{owner}}/{{repo}}",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "repos",
+            "{{owner}}",
+            "{{repo}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{githubToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "mytoken",
+      "value": ""
+    },
+    {
+      "key": "repositoryName",
+      "value": ""
+    }
+  ]
+}
