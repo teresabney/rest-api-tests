@@ -494,10 +494,6 @@
   ],
   "variable": [
     {
-      "key": "mytoken",
-      "value": ""
-    },
-    {
       "key": "repositoryName",
       "value": ""
     }
