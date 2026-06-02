@@ -19,12 +19,15 @@ jobs:
         with:
           node-version: '20'
 
+      # Install Newman globally so we can run Postman collections from the CLI
       - name: Install Newman
         run: npm install -g newman
 
+      # htmlextra generates a styled HTML report - more readable than JUnit XML
       - name: Install Newman HTML reporter
         run: npm install -g newman-reporter-htmlextra
 
+      # Run the Postman collection api tests and generate junit and html reports
       - name: Run Newman tests
         run: |
           newman run "collections/QA-Portfolio-Project.postman_collection.json" \
@@ -34,6 +37,7 @@ jobs:
             --reporter-junit-export reports/results.xml \
             --reporter-htmlextra-export reports/report.html
 
+      # Upload the reports even if tests fail
       - name: Upload test report
         if: always()
         uses: actions/upload-artifact@v4
