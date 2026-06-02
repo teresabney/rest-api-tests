@@ -15,11 +15,17 @@ A mini API test project using the GitHub REST API to demonstrate full stack QA k
 | githubToken | Fine-grained personal access token | Yes |
 
 ## Running Locally
-The environment file is included with non-sensitive variables. Add your own `githubToken` value before running locally.
+The environment file is included with non-sensitive variables. Before running locally, update the following values in the environment file:
+- `owner` — replace with your GitHub username
+- `repo` — optionally replace with your preferred test repository name
 
-newman run collections/QA-Portfolio-Project.postman_collection.json 
--e environments/QA-Portfolio-Project.postman_environment.json 
---env-var "githubToken=your-actual-token"
+Then pass your personal access token at runtime:
+
+```
+newman run collections/QA-Portfolio-Project.postman_collection.json \
+  -e environments/QA-Portfolio-Project.postman_environment.json \
+  --env-var "githubToken=your-actual-token"
+```
 
 ## CI/CD
 This project uses GitHub Actions to automatically run tests on every push to main. The `githubToken` is stored as a GitHub Secret and injected at runtime.
