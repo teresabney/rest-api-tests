@@ -12,4 +12,5 @@ A mini API test case project using the GitHub REST API, to demonstrate full stac
 newman run collections\QA-Portfolio-Project.postman_collection.json -e environments\QA-Portfolio-Project.postman_environment.json --env-var "github_token=${{ secrets.PAT_TOKEN }}"
 
 
-
+***Aditional Notes***
+x
