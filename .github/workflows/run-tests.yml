@@ -29,3 +29,10 @@ jobs:
             --env-var "githubToken=${{ secrets.PAT_TOKEN }}" \
             --reporters cli,junit \
             --reporter-junit-export reports/results.xml
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-results
+          path: reports/results.xml
