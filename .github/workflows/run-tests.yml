@@ -22,17 +22,21 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
 
+      - name: Install Newman HTML reporter
+        run: npm install -g newman-reporter-htmlextra
+
       - name: Run Newman tests
         run: |
           newman run "collections/QA-Portfolio-Project.postman_collection.json" \
             -e "environments/QA-Portfolio-Project.postman_environment.json" \
             --env-var "githubToken=${{ secrets.PAT_TOKEN }}" \
-            --reporters cli,junit \
-            --reporter-junit-export reports/results.xml
+            --reporters cli,junit,htmlextra \
+            --reporter-junit-export reports/results.xml \
+            --reporter-htmlextra-export reports/report.html
 
       - name: Upload test report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: newman-results
-          path: reports/results.xml
+          path: reports/
