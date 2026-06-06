@@ -11,7 +11,7 @@ A mini API test project using the GitHub REST API to demonstrate full stack QA k
 |---|---|---|
 | baseURL | GitHub API base URL | No |
 | repo | Repository name used in tests | No |
-| owner | GitHub account owner | No |
+| owner | GitHub account owner | Yes |
 | githubToken | Fine-grained personal access token | Yes |
 
 ## Running Locally
@@ -19,12 +19,13 @@ The environment file is included with non-sensitive variables. Before running lo
 - `owner` — replace with your GitHub username
 - `repo` — optionally replace with your preferred test repository name
 
-Then pass your personal access token at runtime:
+Then pass your owner name and personal access token at runtime:
 
 ```
 newman run collections/QA-Portfolio-Project.postman_collection.json \
   -e environments/QA-Portfolio-Project.postman_environment.json \
-  --env-var "githubToken=your-actual-token"
+  --env-var "githubToken=your-actual-token" \
+  --env-var "owner=your-actual-ownername" \
 ```
 
 ## CI/CD
