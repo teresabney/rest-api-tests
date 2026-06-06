@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="QA-Portfolio-Project" tests="10" time="1.872">
+  <testsuite name="Delete repo cautionary cleanup" id="f1753495-591d-4200-bcbe-9fb57e7e8535" timestamp="2026-06-06T06:03:46.089Z" tests="1" failures="1" errors="0" time="0.252">
+    <testcase name="Cleanup 204 or 404" time="0.252" classname="DeleteRepoCautionaryCleanup">
+      <failure type="AssertionFailure" message="expected 401 to be one of [ 204, 404 ]">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: Delete repo cautionary cleanup.]]>
+        <![CDATA[Test description: Cleanup 204 or 404.]]>
+        <![CDATA[Error message: expected 401 to be one of [ 204, 404 ].]]>
+        <![CDATA[Stacktrace: AssertionError: expected 401 to be one of [ 204, 404 ]
+   at Object.eval sandbox-script.js:1:1).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Create Repo" id="adafdb63-5b90-4e01-ba76-906cece92c73" timestamp="2026-06-06T06:03:46.089Z" tests="3" failures="3" errors="0" time="0.158">
+    <testcase name="Status code is 201" time="0.158" classname="CreateRepo">
+      <failure type="AssertionFailure" message="expected response to have status code 201 but got 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: Create Repo.]]>
+        <![CDATA[Test description: Status code is 201.]]>
+        <![CDATA[Error message: expected response to have status code 201 but got 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected response to have status code 201 but got 401
+   at Object.eval sandbox-script.js:1:2).]]>
+      </failure>
+    </testcase>
+    <testcase name="Repository name created" time="0.158" classname="CreateRepo">
+      <failure type="AssertionFailure" message="expected undefined to deeply equal 'qa-test-folder'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: Create Repo.]]>
+        <![CDATA[Test description: Repository name created.]]>
+        <![CDATA[Error message: expected undefined to deeply equal 'qa-test-folder'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected undefined to deeply equal 'qa-test-folder'
+   at Object.eval sandbox-script.js:2:2).]]>
+      </failure>
+    </testcase>
+    <testcase name="Description created" time="0.158" classname="CreateRepo">
+      <failure type="AssertionFailure" message="expected undefined to deeply equal true">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: Create Repo.]]>
+        <![CDATA[Test description: Description created.]]>
+        <![CDATA[Error message: expected undefined to deeply equal true.]]>
+        <![CDATA[Stacktrace: AssertionError: expected undefined to deeply equal true
+   at Object.eval sandbox-script.js:3:2).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Edit repo description" id="0125b358-e806-4e55-82cd-fbcda73931bf" timestamp="2026-06-06T06:03:46.089Z" tests="2" failures="2" errors="0" time="0.199">
+    <testcase name="Status code is 200" time="0.199" classname="EditRepoDescription">
+      <failure type="AssertionFailure" message="expected response to have status code 200 but got 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: Edit repo description.]]>
+        <![CDATA[Test description: Status code is 200.]]>
+        <![CDATA[Error message: expected response to have status code 200 but got 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected response to have status code 200 but got 401
+   at Object.eval sandbox-script.js:1:3).]]>
+      </failure>
+    </testcase>
+    <testcase name="Check edited description" time="0.199" classname="EditRepoDescription">
+      <failure type="AssertionFailure" message="expected undefined to deeply equal 'I am editing the description'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: Edit repo description.]]>
+        <![CDATA[Test description: Check edited description.]]>
+        <![CDATA[Error message: expected undefined to deeply equal 'I am editing the description'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected undefined to deeply equal 'I am editing the description'
+   at Object.eval sandbox-script.js:2:3).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Add/replace repo topics" id="20415950-3b86-4cb7-af5a-8fbf61dd7552" timestamp="2026-06-06T06:03:46.089Z" tests="1" failures="1" errors="0" time="0.293">
+    <testcase name="Status code is 200" time="0.293" classname="AddReplaceRepoTopics">
+      <failure type="AssertionFailure" message="expected response to have status code 200 but got 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: Add/replace repo topics.]]>
+        <![CDATA[Test description: Status code is 200.]]>
+        <![CDATA[Error message: expected response to have status code 200 but got 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected response to have status code 200 but got 401
+   at Object.eval sandbox-script.js:1:4).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Get repos" id="94064a2a-becb-4184-83c6-975cdc244489" timestamp="2026-06-06T06:03:46.089Z" tests="3" failures="3" errors="0" time="0.269">
+    <testcase name="Status code is 200" time="0.269" classname="GetRepos">
+      <failure type="AssertionFailure" message="expected response to have status code 200 but got 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: Get repos.]]>
+        <![CDATA[Test description: Status code is 200.]]>
+        <![CDATA[Error message: expected response to have status code 200 but got 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected response to have status code 200 but got 401
+   at Object.eval sandbox-script.js:1:5).]]>
+      </failure>
+    </testcase>
+    <testcase name="Expected new repo name is in the list" time="0.269" classname="GetRepos">
+      <failure type="AssertionFailure" message="repos.some is not a function">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: Get repos.]]>
+        <![CDATA[Test description: Expected new repo name is in the list.]]>
+        <![CDATA[Error message: repos.some is not a function.]]>
+        <![CDATA[Stacktrace: TypeError: repos.some is not a function
+   at Object.eval sandbox-script.js:2:5).]]>
+      </failure>
+    </testcase>
+    <testcase name="New repo exists and is private" time="0.269" classname="GetRepos">
+      <failure type="AssertionFailure" message="repos.find is not a function">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: Get repos.]]>
+        <![CDATA[Test description: New repo exists and is private.]]>
+        <![CDATA[Error message: repos.find is not a function.]]>
+        <![CDATA[Stacktrace: TypeError: repos.find is not a function
+   at Object.eval sandbox-script.js:3:5).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="negative test: Create repo 422 already exists" id="38de6a8c-854f-4513-bfc0-8e68700af52f" timestamp="2026-06-06T06:03:46.089Z" tests="1" failures="1" errors="0" time="0.152">
+    <testcase name="Status code is 422" time="0.152" classname="NegativeTestCreateRepo422AlreadyExists">
+      <failure type="AssertionFailure" message="expected response to have status code 422 but got 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: negative test: Create repo 422 already exists.]]>
+        <![CDATA[Test description: Status code is 422.]]>
+        <![CDATA[Error message: expected response to have status code 422 but got 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected response to have status code 422 but got 401
+   at Object.eval sandbox-script.js:1:6).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Delete repo" id="12c938e4-d1d3-43a3-a9f0-ab4e524c9b68" timestamp="2026-06-06T06:03:46.089Z" tests="1" failures="1" errors="0" time="0.180">
+    <testcase name="Status code is 204" time="0.180" classname="DeleteRepo">
+      <failure type="AssertionFailure" message="expected response to have status code 204 but got 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: Delete repo.]]>
+        <![CDATA[Test description: Status code is 204.]]>
+        <![CDATA[Error message: expected response to have status code 204 but got 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected response to have status code 204 but got 401
+   at Object.eval sandbox-script.js:1:7).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="negative test: Get repos 401 Unauthorized" id="36427eda-5836-4c7c-ae8c-4c71cc711926" timestamp="2026-06-06T06:03:46.089Z" tests="1" failures="0" errors="0" time="0.240">
+    <testcase name="Status code is 401" time="0.240" classname="NegativeTestGetRepos401Unauthorized"/>
+  </testsuite>
+  <testsuite name="negative test: Get repos 400 bad request" id="ad7ba4c5-67bc-4ff2-bc81-162879e554d9" timestamp="2026-06-06T06:03:46.089Z" tests="1" failures="0" errors="0" time="0.036">
+    <testcase name="Status code is 400" time="0.036" classname="NegativeTestGetRepos400BadRequest"/>
+  </testsuite>
+  <testsuite name="negative test: Get repos 404 not found" id="7c2d7342-9a75-4d90-b2b7-6c3907ac546d" timestamp="2026-06-06T06:03:46.089Z" tests="1" failures="1" errors="0" time="0.093">
+    <testcase name="Status code is 404" time="0.093" classname="NegativeTestGetRepos404NotFound">
+      <failure type="AssertionFailure" message="expected response to have status code 404 but got 401">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: e6855538-e897-4457-9d0e-0a97cd7ce3d5.]]>
+        <![CDATA[Collection name: QA-Portfolio-Project.]]>
+        <![CDATA[Request name: negative test: Get repos 404 not found.]]>
+        <![CDATA[Test description: Status code is 404.]]>
+        <![CDATA[Error message: expected response to have status code 404 but got 401.]]>
+        <![CDATA[Stacktrace: AssertionError: expected response to have status code 404 but got 401
+   at Object.eval sandbox-script.js:1:10).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+</testsuites>

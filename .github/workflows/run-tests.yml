@@ -33,6 +33,7 @@ jobs:
           newman run "collections/QA-Portfolio-Project.postman_collection.json" \
             -e "environments/QA-Portfolio-Project.postman_environment.json" \
             --env-var "githubToken=${{ secrets.PAT_TOKEN }}" \
+            --env-var "owner=${{ secrets.REPO_OWNER }}" \
             --reporters cli,junit,htmlextra \
             --reporter-junit-export reports/results.xml \
             --reporter-htmlextra-export reports/report.html

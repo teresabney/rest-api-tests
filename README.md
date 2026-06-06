@@ -28,4 +28,4 @@ newman run collections/QA-Portfolio-Project.postman_collection.json \
 ```
 
 ## CI/CD
-This project uses GitHub Actions to automatically run tests on every push to main. The `githubToken` is stored as a GitHub Secret and injected at runtime.
+This project uses GitHub Actions to automatically run tests on every push to main. The `githubToken` and `owner` are stored as GitHub Secrets and injected at runtime.
