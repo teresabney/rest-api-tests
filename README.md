@@ -26,21 +26,20 @@ token-based authentication, and negative test cases for 400, 401, 404, and 422 s
 - HTML reporter: `npm install -g newman-reporter-htmlextra`
 
 ## Running Locally
-The environment file is included with non-sensitive variables. Before running locally:
-- `owner` — replace with your GitHub username in the environment file
-- `repo` — optionally replace with your preferred test repository name
+The environment file is included showing required variables. Sensitive values are intentionally 
+blank and must be passed at runtime.
 
 **With Docker:**
 docker run --rm 
--e githubToken=your-actual-token 
--e owner=your-actual-ownername 
+-e githubToken=<github-personal-access-token>
+-e owner=<github-username>
 api-tests
 
 **Without Docker:**
 newman run collections/QA-Portfolio-Project.postman_collection.json 
 -e environments/QA-Portfolio-Project.postman_environment.json 
---env-var "githubToken=your-actual-token" 
---env-var "owner=your-actual-ownername"
+--env-var "githubToken=<github-personal-access-token>" 
+--env-var "owner=<github-username>"
 
 ## CI/CD
 This project uses GitHub Actions to automatically run tests on every push to main.
