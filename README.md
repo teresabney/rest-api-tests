@@ -30,16 +30,20 @@ The environment file is included showing required variables. Sensitive values ar
 blank and must be passed at runtime.
 
 **With Docker:**
-docker run --rm 
--e githubToken=<github-personal-access-token>
--e owner=<github-username>
-api-tests
+```
+docker run --rm \
+  -e githubToken=<github-personal-access-token> \
+  -e owner=<github-username> \
+  api-tests
+```
 
 **Without Docker:**
-newman run collections/QA-Portfolio-Project.postman_collection.json 
--e environments/QA-Portfolio-Project.postman_environment.json 
---env-var "githubToken=<github-personal-access-token>" 
---env-var "owner=<github-username>"
+```
+newman run collections/QA-Portfolio-Project.postman_collection.json \
+  -e environments/QA-Portfolio-Project.postman_environment.json \
+  --env-var "githubToken=<github-personal-access-token>" \
+  --env-var "owner=<github-username>"
+```
 
 ## CI/CD
 This project uses GitHub Actions to automatically run tests on every push to main.
