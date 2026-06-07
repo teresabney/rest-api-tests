@@ -14,29 +14,18 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      # Build the Docker image from the Dockerfile
+      - name: Build Docker image
+        run: docker build -t api-tests .
 
-      # Install Newman globally so we can run Postman collections from the CLI
-      - name: Install Newman
-        run: npm install -g newman
-
-      # htmlextra generates a styled HTML report - more readable than JUnit XML
-      - name: Install Newman HTML reporter
-        run: npm install -g newman-reporter-htmlextra
-
-      # Run the Postman collection api tests and generate junit and html reports
+      # Run Newman tests inside the Docker container
       - name: Run Newman tests
         run: |
-          newman run "collections/QA-Portfolio-Project.postman_collection.json" \
-            -e "environments/QA-Portfolio-Project.postman_environment.json" \
-            --env-var "githubToken=${{ secrets.PAT_TOKEN }}" \
-            --env-var "owner=${{ secrets.REPO_OWNER }}" \
-            --reporters cli,junit,htmlextra \
-            --reporter-junit-export reports/results.xml \
-            --reporter-htmlextra-export reports/report.html
+          docker run --rm \
+            -e "githubToken=${{ secrets.PAT_TOKEN }}" \
+            -e "owner=${{ secrets.REPO_OWNER }}" \
+            -v ${{ github.workspace }}/reports:/app/reports \
+            api-tests
 
       # Upload the reports even if tests fail
       - name: Upload test report
