@@ -3,7 +3,7 @@
 [![Run Newman API Tests](https://github.com/teresabney/rest-api-tests/actions/workflows/run-tests.yml/badge.svg)](https://github.com/teresabney/rest-api-tests/actions/workflows/run-tests.yml)
 
 ## Project Info
-A mini API test project using the GitHub REST API to demonstrate full stack QA knowledge 
+A mini API test project using the GitHub REST API api.github.com to demonstrate full stack QA knowledge 
 of APIs, Postman, automated API testing, and CI/CD integration. It covers a CRUD flow, 
 token-based authentication, and negative test cases for 400, 401, 404, and 422 status codes.
 
