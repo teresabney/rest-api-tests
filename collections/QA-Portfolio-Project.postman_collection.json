@@ -52,10 +52,7 @@
           "listen": "prerequest",
           "script": {
             "exec": [
-              "const random = Math.random().toString(36).substring(2);\r",
-              "const repositoryName = \"My repository \" + random;\r",
-              "\r",
-              "pm.collectionVariables.set(\"repositoryName\", repositoryName);"
+              ""
             ],
             "type": "text/javascript",
             "packages": {},
@@ -75,7 +72,7 @@
               "    pm.expect(jsonData.name).to.eql(pm.variables.get(\"repo\"));\r",
               "});\r",
               "\r",
-              "pm.test(\"Description created\", function () {\r",
+              "pm.test(\"Repository created as private\", function () {\r",
               "    var jsonData = pm.response.json();\r",
               "    pm.expect(jsonData.private).to.eql(true);\r",
               "});"
