@@ -122,7 +122,7 @@
               "\r",
               "pm.test(\"Check edited description\", function () {\r",
               "    var jsonData = pm.response.json();\r",
-              "    pm.expect(jsonData.description).to.eql(\"I am editing the description\");\r",
+              "    pm.expect(jsonData.description).to.eql(\"I edited the description\");\r",
               "});"
             ],
             "type": "text/javascript",
@@ -136,7 +136,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"name\": \"{{repo}}\",\r\n    \"description\": \"I am editing the description\",\r\n    \"private\": true\r\n}",
+          "raw": "{\r\n    \"name\": \"{{repo}}\",\r\n    \"description\": \"I edited the description\",\r\n    \"private\": true\r\n}",
           "options": {
             "raw": {
               "language": "json"
