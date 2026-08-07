@@ -104,8 +104,7 @@
             "user",
             "repos"
           ]
-        },
-        "description": "ISSUE NOTES:\n\nI can see the issue. The **Create Repository** request is returning a `404 Not Found` error. Let me analyze what's wrong:\n\n1. **The URL has a trailing space**: `https://api.github.com/user/repos` — there's a space at the end of the URL, which can cause the request to fail. **\\[This was definitely an issue. doh!\\]**\n    \n2. **No** **`Authorization`** **header**: The GitHub API requires authentication to create a repository. The request has no headers set, even though a `github-token` variable is used elsewhere in the collection. **\\[I don't get this, because they were there\\]**\n    \n3. **No** **`Content-Type`** **header**: The body is JSON but there's no `Content-Type: application/json` header. **\\[I don't get this because it was defined when I checked\\]**\n    \n\nI wish it would let me do the fixes, so I can learn."
+        }
       },
       "response": []
     },
@@ -301,8 +300,7 @@
             "user",
             "repos"
           ]
-        },
-        "description": "ISSUE NOTES:\n\nI can see the issue. The **Create Repository** request is returning a `404 Not Found` error. Let me analyze what's wrong:\n\n1. **The URL has a trailing space**: `https://api.github.com/user/repos` — there's a space at the end of the URL, which can cause the request to fail. **\\[This was definitely an issue. doh!\\]**\n    \n2. **No** **`Authorization`** **header**: The GitHub API requires authentication to create a repository. The request has no headers set, even though a `github-token` variable is used elsewhere in the collection. **\\[I don't get this, because they were there\\]**\n    \n3. **No** **`Content-Type`** **header**: The body is JSON but there's no `Content-Type: application/json` header. **\\[I don't get this because it was defined when I checked\\]**\n    \n\nI wish it would let me do the fixes, so I can learn."
+        }
       },
       "response": []
     },
