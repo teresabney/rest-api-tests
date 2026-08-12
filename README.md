@@ -1,6 +1,6 @@
 # REST API Test Suite — GitHub REST API
 
-[![Run Newman API Tests](https://github.com/teresabney/rest-api-tests/actions/workflows/run-tests.yml/badge.svg)](https://github.com/teresabney/rest-api-tests/actions/workflows/run-tests.yml)
+[![API Tests - Newman](https://github.com/teresabney/rest-api-tests/actions/workflows/ci.yml/badge.svg)](https://github.com/teresabney/rest-api-tests/actions/workflows/ci.yml)
 
 ## Project Info
 A mini API test project using the GitHub REST API api.github.com to demonstrate full stack QA knowledge 

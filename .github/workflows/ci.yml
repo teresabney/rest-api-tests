@@ -1,4 +1,4 @@
-name: Run Newman API Tests
+name: API Tests - Newman
 
 on:
   push:
