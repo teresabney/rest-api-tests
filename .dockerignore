@@ -4,6 +4,10 @@ reports/
 # Environment
 .env
 
+# Git
+.git
+.github/
+
 # Node
 node_modules/
 
