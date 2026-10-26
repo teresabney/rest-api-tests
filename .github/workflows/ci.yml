@@ -22,8 +22,8 @@ jobs:
       - name: Run Newman tests
         run: |
           docker run --rm \
-            -e "githubToken=${{ secrets.PAT_TOKEN }}" \
-            -e "owner=${{ secrets.REPO_OWNER }}" \
+            -e "PAT_TOKEN=${{ secrets.PAT_TOKEN }}" \
+            -e "REPO_OWNER=${{ secrets.REPO_OWNER }}" \
             -v ${{ github.workspace }}/reports:/app/reports \
             api-tests
 
