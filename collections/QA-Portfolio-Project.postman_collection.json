@@ -8,19 +8,15 @@
   },
   "item": [
     {
-      "name": "Delete repo cautionary cleanup",
+      "name": "Setup: Delete repo if exists",
       "event": [
         {
           "listen": "test",
           "script": {
-            "exec": [
-              "pm.test(\"Cleanup 204 or 404\", function () {\r",
-              "    pm.expect(pm.response.code).to.be.oneOf([204, 404]);\r",
-              "});"
-            ],
             "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "exec": [
+              "pm.test(\"Cleanup 204 or 404\", function () {\r\n    pm.expect(pm.response.code).to.be.oneOf([204, 404]);\r\n});"
+            ]
           }
         }
       ],
@@ -29,7 +25,12 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": ""
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
         },
         "url": {
           "raw": "{{baseURL}}/repos/{{owner}}/{{repo}}",
@@ -46,40 +47,15 @@
       "response": []
     },
     {
-      "name": "Create Repo",
+      "name": "Create repo",
       "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
         {
           "listen": "test",
           "script": {
-            "exec": [
-              "pm.test(\"Status code is 201\", function () {\r",
-              "    pm.response.to.have.status(201);\r",
-              "});\r",
-              "\r",
-              "pm.test(\"Repository name created\", function () {\r",
-              "    var jsonData = pm.response.json();\r",
-              "    pm.expect(jsonData.name).to.eql(pm.variables.get(\"repo\"));\r",
-              "});\r",
-              "\r",
-              "pm.test(\"Repository created as private\", function () {\r",
-              "    var jsonData = pm.response.json();\r",
-              "    pm.expect(jsonData.private).to.eql(true);\r",
-              "});"
-            ],
             "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Repository name created\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.expect(jsonData.name).to.eql(pm.variables.get(\"repo\"));\r\n});\r\n\r\npm.test(\"Repository created as private\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.expect(jsonData.private).to.eql(true);\r\n});"
+            ]
           }
         }
       ],
@@ -249,33 +225,24 @@
       "response": []
     },
     {
-      "name": "negative test: Create repo 422 already exists",
+      "name": "Negative test: Create repo 422 already exists",
       "event": [
         {
           "listen": "prerequest",
           "script": {
-            "exec": [
-              "const random = Math.random().toString(36).substring(2);\r",
-              "const repositoryName = \"My repository \" + random;\r",
-              "\r",
-              "pm.collectionVariables.set(\"repositoryName\", repositoryName);"
-            ],
             "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "exec": [
+              "const random = Math.random().toString(36).substring(2);\r\nconst repositoryName = \"My repository \" + random;\r\n\r\npm.collectionVariables.set(\"repositoryName\", repositoryName);"
+            ]
           }
         },
         {
           "listen": "test",
           "script": {
-            "exec": [
-              "pm.test(\"Status code is 422\", function () {\r",
-              "    pm.response.to.have.status(422);\r",
-              "});"
-            ],
             "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "exec": [
+              "pm.test(\"Status code is 422\", function () {\r\n    pm.response.to.have.status(422);\r\n});"
+            ]
           }
         }
       ],
@@ -343,20 +310,15 @@
       "response": []
     },
     {
-      "name": "negative test: Get repos 401 Unauthorized",
+      "name": "Negative test: Get repos 401 unauthorized",
       "event": [
         {
           "listen": "test",
           "script": {
-            "exec": [
-              "pm.test(\"Status code is 401\", function () {\r",
-              "    pm.response.to.have.status(401);\r",
-              "});\r",
-              ""
-            ],
             "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "exec": [
+              "pm.test(\"Status code is 401\", function () {\r\n    pm.response.to.have.status(401);\r\n});\r\n"
+            ]
           }
         }
       ],
@@ -380,20 +342,15 @@
       "response": []
     },
     {
-      "name": "negative test: Get repos 400 bad request",
+      "name": "Negative test: Get repos 400 bad request",
       "event": [
         {
           "listen": "test",
           "script": {
-            "exec": [
-              "pm.test(\"Status code is 400\", function () {\r",
-              "    pm.response.to.have.status(400);\r",
-              "});\r",
-              ""
-            ],
             "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n"
+            ]
           }
         }
       ],
@@ -417,21 +374,15 @@
       "response": []
     },
     {
-      "name": "negative test: Get repos 404 not found",
+      "name": "Negative test: Get repos 404 not found",
       "event": [
         {
           "listen": "test",
           "script": {
-            "exec": [
-              "pm.test(\"Status code is 404\", function () {\r",
-              "    pm.response.to.have.status(404);\r",
-              "});\r",
-              "\r",
-              ""
-            ],
             "type": "text/javascript",
-            "packages": {},
-            "requests": {}
+            "exec": [
+              "pm.test(\"Status code is 404\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\n"
+            ]
           }
         }
       ],
