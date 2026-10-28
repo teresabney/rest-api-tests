@@ -20,7 +20,7 @@ token-based authentication, and negative test cases for 400, 401, 404, and 422 s
 
 | Variable | Description | Sensitive |
 |---|---|---|
-| baseURL | GitHub API base URL | No |
+| baseUrl | GitHub API base URL | No |
 | repo | Repository name used in tests | No |
 | owner | GitHub account owner (set from `REPO_OWNER`) | Yes |
 | githubToken | Fine-grained personal access token (set from `PAT_TOKEN`) | Yes |
