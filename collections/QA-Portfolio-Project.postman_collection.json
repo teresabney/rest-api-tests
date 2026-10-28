@@ -33,9 +33,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/repos/{{owner}}/{{repo}}",
+          "raw": "{{baseUrl}}/repos/{{owner}}/{{repo}}",
           "host": [
-            "{{baseURL}}"
+            "{{baseUrl}}"
           ],
           "path": [
             "repos",
@@ -72,9 +72,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/user/repos",
+          "raw": "{{baseUrl}}/user/repos",
           "host": [
-            "{{baseURL}}"
+            "{{baseUrl}}"
           ],
           "path": [
             "user",
@@ -119,9 +119,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/repos/{{owner}}/{{repo}}",
+          "raw": "{{baseUrl}}/repos/{{owner}}/{{repo}}",
           "host": [
-            "{{baseURL}}"
+            "{{baseUrl}}"
           ],
           "path": [
             "repos",
@@ -164,9 +164,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/repos/{{owner}}/{{repo}}/topics",
+          "raw": "{{baseUrl}}/repos/{{owner}}/{{repo}}/topics",
           "host": [
-            "{{baseURL}}"
+            "{{baseUrl}}"
           ],
           "path": [
             "repos",
@@ -212,9 +212,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/user/repos",
+          "raw": "{{baseUrl}}/user/repos",
           "host": [
-            "{{baseURL}}"
+            "{{baseUrl}}"
           ],
           "path": [
             "user",
@@ -259,9 +259,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/user/repos",
+          "raw": "{{baseUrl}}/user/repos",
           "host": [
-            "{{baseURL}}"
+            "{{baseUrl}}"
           ],
           "path": [
             "user",
@@ -296,9 +296,9 @@
           "raw": ""
         },
         "url": {
-          "raw": "{{baseURL}}/repos/{{owner}}/{{repo}}",
+          "raw": "{{baseUrl}}/repos/{{owner}}/{{repo}}",
           "host": [
-            "{{baseURL}}"
+            "{{baseUrl}}"
           ],
           "path": [
             "repos",
@@ -329,9 +329,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/user/repos",
+          "raw": "{{baseUrl}}/user/repos",
           "host": [
-            "{{baseURL}}"
+            "{{baseUrl}}"
           ],
           "path": [
             "user",
@@ -361,9 +361,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/%/repos",
+          "raw": "{{baseUrl}}/%/repos",
           "host": [
-            "{{baseURL}}"
+            "{{baseUrl}}"
           ],
           "path": [
             "%",
@@ -390,9 +390,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/repos/{{owner}}/{{repo}}",
+          "raw": "{{baseUrl}}/repos/{{owner}}/{{repo}}",
           "host": [
-            "{{baseURL}}"
+            "{{baseUrl}}"
           ],
           "path": [
             "repos",
